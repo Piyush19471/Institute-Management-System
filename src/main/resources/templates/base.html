@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institute Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        /* Ensure the footer is fixed and at the bottom */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            margin-bottom: 20px;
+            /* Adds space above footer */
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            /* Darker black color */
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        footer .social-icons a {
+            font-size: 24px;
+            margin: 0 15px;
+            transition: transform 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        footer .contact-info a {
+            color: #ffffff;
+        }
+
+        footer .contact-info i {
+            margin-right: 10px;
+        }
+
+        /* Adjust dropdown hover behavior */
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Institute Management</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- Students Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/students" id="studentsDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Students
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="studentsDropdown">
+                            <li><a class="dropdown-item" th:href="@{/students/form}">Add New Student</a></li>
+                            <li><a class="dropdown-item" th:href="@{/students/list}">See List of Students</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Courses Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Courses
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
+                            <li><a class="dropdown-item" th:href="@{/courses/form}">Add New Course</a></li>
+                            <li><a class="dropdown-item" th:href="@{/courses/list}">See List of Courses</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Instructors Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="instructorsDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Instructors
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="instructorsDropdown">
+                            <li><a class="dropdown-item" th:href="@{/instructors/form}">Add New Instructor</a></li>
+                            <li><a class="dropdown-item" th:href="@{/instructors/list}">See List of Instructors</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Search Dropdown with Wild Hover -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                            aria-expanded="false">
+                            Search
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="searchDropdown">
+                            <li><a class="dropdown-item" th:href="@{/students/search}">Search by Student</a></li>
+                            <li><a class="dropdown-item" th:href="@{/search/instructor}">Search by Instructor</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Dynamic Content Wrapper -->
+    <div class="content-wrapper container mt-4">
+        <div th:replace="~{::content}"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-white text-center py-4">
+        <div class="container">
+            <h4 class="mb-2">Institute Management System</h4>
+            <p class="mb-4">Empowering Education through Technology</p>
+
+            <!-- Contact Details -->
+            <div class="mb-4">
+                <p class="mb-1"><strong>Contact Us:</strong></p>
+                <p class="mb-1">Phone: +1 (123) 456-7890</p>
+                <p>Email: <a href="mailto:info@institute.com"
+                        class="text-decoration-none text-white">info@institute.com</a>
+                </p>
+                <p>Address: 123 Education Lane, Knowledge City</p>
+            </div>
+
+            <!-- Social Media Links -->
+            <div>
+                <p class="mb-2">Follow Us:</p>
+                <a href="https://facebook.com" target="_blank" class="text-white mx-2" style="font-size: 1.5rem;">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="text-white mx-2" style="font-size: 1.5rem;">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="text-white mx-2" style="font-size: 1.5rem;">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="text-white mx-2" style="font-size: 1.5rem;">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+        <div class="mt-4">
+            <small>&copy; 2024 Institute Management System. All Rights Reserved.</small>
+        </div>
+    </footer>
+
+    <!-- Include Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

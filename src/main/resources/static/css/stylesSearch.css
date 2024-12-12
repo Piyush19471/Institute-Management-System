@@ -1,0 +1,11 @@
+input.form-control {
+    background-color: #ffffff;
+    /* White background */
+    color: #000000;
+    /* Black text color */
+}
+
+input.form-control::placeholder {
+    color: #6c757d;
+    /* Placeholder color (Bootstrap default gray) */
+}

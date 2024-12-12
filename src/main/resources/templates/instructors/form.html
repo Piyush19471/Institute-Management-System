@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{base.html}">
+
+<head>
+    <title>Instructors Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div th:fragment="content">
+        <div class="container mt-5">
+            <!-- Page Header -->
+            <div class="text-center mb-4">
+
+
+                <h2 th:text="${instructor?.id != null ? 'Edit Instructor' : 'New Instructor'}" class="text-black"></h2>
+                <p class="text-secondary">Fill out the form below to add instructor details</p>
+            </div>
+            <!-- Instructor Form -->
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <form th:action="@{/instructors/save}" th:object="${instructor}" method="post">
+                        <!-- Instructor Name -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Instructor Name</label>
+                            <input type="text" class="form-control" id="name" name="name" th:field="*{name}"
+                                placeholder="Enter instructor's full name" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" th:field="*{email}"
+                                placeholder="Enter email address" required>
+                        </div>
+
+                        <!-- Specialization -->
+                        <div class="mb-3">
+                            <label for="specialization" class="form-label">Specialization</label>
+                            <input type="text" class="form-control" id="specialization" name="specialization"
+                                th:field="*{specialization}" placeholder="Enter area of expertise" required>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-dark btn-lg">Save Instructor</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
